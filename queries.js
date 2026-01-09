@@ -33,7 +33,7 @@ const runQueries = async () => {
   // await deleteTodo();
 };
 
-connect()
+connect();
 /*------------------------------ Query Functions -----------------------------*/
 
 const createTodo = async () => {
@@ -45,7 +45,7 @@ const createTodo = async () => {
         isComplete: false,
       }, {  
         text: "learn HTML",
-        isComplete: false
+        isComplete: false,
       }
     ];
 
