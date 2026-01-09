@@ -10,7 +10,7 @@ const Todo = require("./models/todo.js");
 const connect = async () => {
   // Connect to MongoDB using the MONGODB_URI specified in our .env file.
   await mongoose.connect(process.env.MONGODB_URI);
-  console.log('Connected to MongoDB');
+  console.log("Connected to MongoDB");
 
   // Call the runQueries function, which will eventually hold functions to work
   // with data in our db.
@@ -18,17 +18,17 @@ const connect = async () => {
 
   // Disconnect our app from MongoDB after our queries run.
   await mongoose.disconnect();
-  console.log('Disconnected from MongoDB');
+  console.log("Disconnected from MongoDB");
 
   // Close our app, bringing us back to the command line.
   process.exit();
 };
 
 const runQueries = async () => {
-  console.log('Queries running.')
+  console.log("Queries running.")
   // The functions calls to run queries in our db will go here as we write them.
-  // await createTodo();
-  await findTodos();
+  await createTodo();
+  // await findTodos();
   // await updateTodo();
   // await deleteTodo();
 };
@@ -36,27 +36,27 @@ const runQueries = async () => {
 connect()
 /*------------------------------ Query Functions -----------------------------*/
 
-// const createTodo = async () => {
-//     const todoData = [{
-//         text: "Learn JS",
-//         isComplete: false,
-//       }, {
-//         text: "Learn CSS",
-//         isComplete: false,
-//       }, {  
-//         text: "Learn HTML",
-//         isComplete: false
-//       }
-//     ];
+const createTodo = async () => {
+    const todoData = [{
+        text: "learn JS",
+        isComplete: false,
+      }, {
+        text: "learn CSS",
+        isComplete: false,
+      }, {  
+        text: "learn HTML",
+        isComplete: false
+      }
+    ];
 
-//     const todo = await Todo.create(todoData);
-//     console.log("new todo:", todo);
-// }
+    const todo = await Todo.create(todoData);
+    console.log("New todo:", todo);
+}
 
-const findTodos = async () => {
-  const todos = await Todo.find({});
-  console.log("All todos:", todos);
-};
+// const findTodos = async () => {
+//   const todos = await Todo.find({});
+//   console.log("All todos:", todos);
+// };
 
 // const updateTodo = async () => {
 //   const id = "6960ba6fc317f9a7145fe8c5";

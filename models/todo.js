@@ -7,9 +7,17 @@ const todoSchema = new mongoose.Schema({
     isComplete: Boolean,
 });
 
+todoSchema.pre("save", function (next) {
+  const docToBeSaved = this
+  if (docToBeSaved.text) {
+    docToBeSaved.text = docToBeSaved.text[0].toUpperCase() + docToBeSaved.text.slice(1);
+  }
+  next();
+});
+
 //contains functionality to perform CRUD on a MongoDB collection
 const Todo = mongoose.model("Todo", todoSchema);
 
-//Need to export it to access it in the app [(]i.e the directory being built]
+//Need to export it to access it in the app [i.e the directory being built]
 module.exports = Todo;
 
