@@ -12,7 +12,7 @@ todoSchema.pre("save", function (next) {
   if (docToBeSaved.text) {
     docToBeSaved.text = docToBeSaved.text[0].toUpperCase() + docToBeSaved.text.slice(1);
   }
-  next();
+//   next();
 });
 
 //contains functionality to perform CRUD on a MongoDB collection
